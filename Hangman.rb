@@ -92,6 +92,14 @@ class Game
     end
   end
   
+  def win
+    if @hidden_word.all? { |letters| @correct_letters.include?(letters) }
+      puts "You won! Congrats!"
+      puts ""
+      abort
+    end
+  end
+  
   def run
     hidden_word_array
     initialize_final_word_array
@@ -100,14 +108,6 @@ class Game
     puts ""
     puts "Game Over!"
     puts "The special word was actually #{@random_word}"
-  end
-  
-  def win
-    if @hidden_word.all? { |letters| @correct_letters.include?(letters) }
-      puts "You won! Congrats!"
-      puts ""
-      abort
-    end
   end
   
   def hangman_graphic
