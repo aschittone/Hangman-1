@@ -1,2 +1,2 @@
 # Hangman
-A command line Hangman game
+A command line Hangman game.
