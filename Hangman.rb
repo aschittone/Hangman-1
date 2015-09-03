@@ -25,9 +25,15 @@ class Game
     @hidden_word.pop
   end
   
+  def start
+    puts "================================================================="
+    puts "Hello!  Welcome to a command line version of the classic Hangman."
+    puts "The word we have chosen for you is #{@random_word.length} letters long.  Good Luck!" 
+    puts "================================================================="
+  end
+  
   def guess
-    puts " "
-    print "Please guess one letter: "
+    print "Please guess a letter: "
     letter = gets.chomp.to_s.downcase
     if @guessed_letters.include?(letter)
       puts "#{letter.upcase} has already been guessed!"
@@ -38,24 +44,24 @@ class Game
     else 
       @guessed_letters << letter
       if @hidden_word.include?(letter)
+        puts ""
         puts "#{letter.capitalize} was found!"
         @correct_letters << letter
         match?(letter)
-        puts ""
       else
-        puts "#{letter} was not found!"
+        puts ""
+        puts "#{letter.capitalize} was not found!"
         @turn += 1
-        puts
       end
     end
   end
   
   def turn
-    puts ""
-    puts "Turn Number: #{@turn}"
     puts "Letters Guessed: #{@guessed_letters}"
     guess
+    hangman_graphic
     print_tiles_array
+    puts ""
   end
   
   def initialize_final_word_array
@@ -71,9 +77,6 @@ class Game
     end
   end
   
-  def win
-  end
-  
   def match?(letter)
     @hidden_word.each_with_index do |l, index|
       if l == letter
@@ -83,20 +86,112 @@ class Game
   end
     
   def play
-    while @turn < 3
+    while @turn < 6
       turn
+      win
     end
   end
   
-  def debug
+  def run
     hidden_word_array
     initialize_final_word_array
+    start
     play
-    puts
-    puts
-    puts "Sorry, but the correct answer was #{@random_word.upcase}."
+    puts ""
+    puts "Game Over!"
+    puts "The special word was actually #{@random_word}"
+  end
+  
+  def win
+    if @hidden_word.all? { |letters| @correct_letters.include?(letters) }
+      puts "You won! Congrats!"
+      puts ""
+      abort
+    end
+  end
+  
+  def hangman_graphic
+    case @turn
+    when 0
+      puts ""
+      puts "      __________"
+      puts "      |        |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "    ------------"
+    when 1
+      puts ""
+      puts "      __________"
+      puts "      |        |"
+      puts "      0        |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "    ------------"
+    when 2
+      puts ""
+      puts "      __________"
+      puts "      |        |"
+      puts "      0        |"
+      puts "      |        |"
+      puts "      |        |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "    ------------"
+    when 3
+      puts ""
+      puts "      __________"
+      puts "      |        |"
+      puts "      0        |"
+      puts "      |/       |"
+      puts "      |        |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "    ------------"
+    when 4
+      puts ""
+      puts "      __________"
+      puts "      |        |"
+      puts "      0        |"
+      puts "     \\|/       |"
+      puts "      |        |"
+      puts "               |"
+      puts "               |"
+      puts "               |"
+      puts "    ------------"
+    when 5
+      puts ""
+      puts "      __________"
+      puts "      |        |"
+      puts "      0        |"
+      puts "     \\|/       |"
+      puts "      |        |"
+      puts "     /         |"
+      puts "               |"
+      puts "               |"
+      puts "    ------------"
+    when 6
+      puts ""
+      puts "      __________"
+      puts "      |        |"
+      puts "      0        |"
+      puts "     \\|/       |"
+      puts "      |        |"
+      puts "     / \\       |"
+      puts "               |"
+      puts "               |"
+      puts "    ------------"
+    end
   end
   
 end
     
-test = Game.new.debug
+test = Game.new.run
