@@ -2,7 +2,7 @@
 A command line Hangman game.  To run the game type ```ruby Hangman.rb``` into the command line after navigating to the current directory where the contents are.
 
 # Game Interface
-Hangman will prompt you for your choice and you will be provided a visual on correct letters, letters guessed, and of course the hangman graphic itself to let you know how close you are.\
+Hangman will prompt you for your choice and you will be provided a visual on correct letters, letters guessed, and of course the hangman graphic itself to let you know how close you are.
 
 ### Upon Load:
 ```
