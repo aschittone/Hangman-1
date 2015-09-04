@@ -2,24 +2,26 @@
 turn: 1
 guessed_letters:
 - e
-- i
+- r
+- o
 random_word: |
-  orinoco
+  tsardom
 correct_letters:
-- i
+- r
+- o
 final_word:
 - " _ "
 - " _ "
-- i
 - " _ "
+- r
 - " _ "
-- " _ "
+- o
 - " _ "
 hidden_word:
-- o
+- t
+- s
+- a
 - r
-- i
-- n
+- d
 - o
-- c
-- o
+- m
