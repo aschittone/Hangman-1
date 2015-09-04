@@ -1,0 +1,26 @@
+--- !ruby/object:Game
+turn: 2
+guessed_letters:
+- y
+- p
+random_word: |
+  alluvium
+correct_letters: []
+final_word:
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+- " _ "
+hidden_word:
+- a
+- l
+- l
+- u
+- v
+- i
+- u
+- m

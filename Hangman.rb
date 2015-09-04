@@ -1,4 +1,6 @@
-class Game
+require 'yaml'
+
+class Game  
   
   def initialize
     @turn = 0
@@ -8,9 +10,44 @@ class Game
     @final_word = []
   end
   
+  def start
+    puts "====================================================================="
+    puts "Hello!  Welcome to a command line version of the classic Hangman."
+    puts "Would you like to start a new game or would you like to load a game?"
+    print "Please type 'new' or 'load': "
+    choice = gets.chomp
+    choose_game(choice)
+  end
+  
+  def choose_game(choice)
+    if choice == 'new'
+      new_game
+    elsif choice == 'load'
+      load_game
+    else 
+      puts "Sorry we didnt understand that, please try again"
+      start
+    end
+  end
+  
+  def new_game
+    puts "====================================================================="
+    puts "Excellent choice!  The word we have chosen for you "
+    puts "is #{@random_word.length} letters long.  Good Luck!" 
+    puts "====================================================================="
+    run
+  end
+  
+  def load_game
+    puts "====================================================================="
+    puts "Finding last game state.............................................."
+    puts "====================================================================="
+    load
+    run
+  end
+  
   def random_word
     random_words = []
-    
     File.foreach('5desk.txt').each do |word|
       if word.length > 5 && word.length < 12
         random_words << word
@@ -25,17 +62,13 @@ class Game
     @hidden_word.pop
   end
   
-  def start
-    puts "================================================================="
-    puts "Hello!  Welcome to a command line version of the classic Hangman."
-    puts "The word we have chosen for you is #{@random_word.length} letters long.  Good Luck!" 
-    puts "================================================================="
-  end
-  
   def guess
-    print "Please guess a letter: "
+    print "Please type 'save' to save current game "\
+           "or guess a letter: "
     letter = gets.chomp.to_s.downcase
-    if @guessed_letters.include?(letter)
+    if letter == 'save'
+      save
+    elsif @guessed_letters.include?(letter)
       puts "#{letter.upcase} has already been guessed!"
       guess
     elsif letter.length != 1
@@ -100,14 +133,43 @@ class Game
     end
   end
   
-  def run
-    hidden_word_array
-    initialize_final_word_array
-    start
-    play
+  def lose
     puts ""
     puts "Game Over!"
     puts "The special word was actually #{@random_word}"
+  end
+  
+  def initialize_arrays
+    hidden_word_array
+    initialize_final_word_array
+  end
+  
+  def run
+    initialize_arrays
+    play
+    lose
+  end
+  
+  def loaded_game
+    hangman_graphic
+    play
+    lose
+    abort
+  end
+  
+  def save
+    save_game = YAML::dump(self)
+    save = File.new("games/saves.yaml", "w")
+    save.write(save_game)
+    save.close
+    puts "Save succcesful!"
+    abort
+  end
+  
+  def load
+    game_state = File.open('games/saves.yaml', 'r')
+    game = game_state.read
+    YAML::load(game).loaded_game
   end
   
   def hangman_graphic
@@ -194,4 +256,4 @@ class Game
   
 end
     
-test = Game.new.run
+test = Game.new.start
