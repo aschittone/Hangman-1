@@ -1,5 +1,5 @@
 # Hangman
-A command line Hangman game.  To run the game type ```ruby Hangman.rb``` into the command line after navigating to the current directory where the contents are.  This game was written in Ruby and utilies YAML for saving / loading games.
+A command line Hangman game.  To run the game type ```ruby Hangman.rb``` into the command line after navigating to the current directory where the contents are.  This game was written in Ruby and utilizes YAML for saving / loading games.
 
 # Game Interface
 Hangman will prompt you for your choice and you will be provided a visual on correct letters, letters guessed, and of course the hangman graphic itself to let you know how close you are.
