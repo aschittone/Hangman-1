@@ -146,6 +146,7 @@ class Game
   
   def run
     initialize_arrays
+    hangman_graphic
     play
     lose
   end
@@ -184,7 +185,7 @@ class Game
       puts "               |"
       puts "               |"
       puts "               |"
-      puts "    ------------"
+      puts "    ============"
     when 1
       puts ""
       puts "      __________"
@@ -195,7 +196,7 @@ class Game
       puts "               |"
       puts "               |"
       puts "               |"
-      puts "    ------------"
+      puts "    ============"
     when 2
       puts ""
       puts "      __________"
@@ -206,7 +207,7 @@ class Game
       puts "               |"
       puts "               |"
       puts "               |"
-      puts "    ------------"
+      puts "    ============"
     when 3
       puts ""
       puts "      __________"
@@ -217,7 +218,7 @@ class Game
       puts "               |"
       puts "               |"
       puts "               |"
-      puts "    ------------"
+      puts "    ============"
     when 4
       puts ""
       puts "      __________"
@@ -228,7 +229,7 @@ class Game
       puts "               |"
       puts "               |"
       puts "               |"
-      puts "    ------------"
+      puts "    ============"
     when 5
       puts ""
       puts "      __________"
@@ -239,7 +240,7 @@ class Game
       puts "     /         |"
       puts "               |"
       puts "               |"
-      puts "    ------------"
+      puts "    ============"
     when 6
       puts ""
       puts "      __________"
@@ -250,7 +251,7 @@ class Game
       puts "     / \\       |"
       puts "               |"
       puts "               |"
-      puts "    ------------"
+      puts "    ============"
     end
   end
   

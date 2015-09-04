@@ -1,26 +1,25 @@
 --- !ruby/object:Game
-turn: 2
+turn: 1
 guessed_letters:
-- y
-- p
+- e
+- i
 random_word: |
-  alluvium
-correct_letters: []
+  orinoco
+correct_letters:
+- i
 final_word:
 - " _ "
 - " _ "
-- " _ "
-- " _ "
+- i
 - " _ "
 - " _ "
 - " _ "
 - " _ "
 hidden_word:
-- a
-- l
-- l
-- u
-- v
+- o
+- r
 - i
-- u
-- m
+- n
+- o
+- c
+- o
