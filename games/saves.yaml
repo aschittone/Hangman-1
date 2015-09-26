@@ -1,27 +1,31 @@
 --- !ruby/object:Game
-turn: 1
+turn: 3
 guessed_letters:
+- r
+- s
+- t
+- l
+- n
 - e
-- r
-- o
 random_word: |
-  tsardom
+  default
 correct_letters:
-- r
-- o
+- t
+- l
+- e
 final_word:
 - " _ "
+- e
 - " _ "
 - " _ "
-- r
 - " _ "
-- o
-- " _ "
-hidden_word:
+- l
 - t
-- s
-- a
-- r
+hidden_word:
 - d
-- o
-- m
+- e
+- f
+- a
+- u
+- l
+- t
